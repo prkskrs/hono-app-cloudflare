@@ -3,14 +3,14 @@ import { Context } from 'hono/jsx';
 
 const app = new Hono()
 
-app.use(async (c, next) => {
-  if (c.req.header("Authorization")) {
-    // Do validation
-    await next()
-  } else {
-    return c.text("You dont have acces");
-  }
-})
+// app.use(async (c, next) => {
+//   if (c.req.header("Authorization")) {
+//     // Do validation
+//     await next()
+//   } else {
+//     return c.text("You dont have acces");
+//   }
+// })
 
 app.get('/', async (c) => {
   const body = await c.req.parseBody()
@@ -18,7 +18,7 @@ app.get('/', async (c) => {
   console.log(c.req.header("Authorization"));
   console.log(c.req.query("param"));
 
-  return c.json({msg: "as"})
+  return c.json({msg: "Hello from prkskrs backend."})
 })
 
 export default app
